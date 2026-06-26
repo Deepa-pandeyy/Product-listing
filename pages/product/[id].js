@@ -58,7 +58,7 @@ export default function ProductDetails({ product }) {
 export async function getServerSideProps({ params }) {
   try {
     const res = await fetch(
-      `https://fakestoreapi.com/products/${params.id}`
+      `https://dummyjson.com/products/${params.id}`
     );
 
     if (!res.ok) {
