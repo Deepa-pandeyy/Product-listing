@@ -39,7 +39,7 @@ Assumptions
 
 Live Demo
 
-https://product-listing-deepa.netlify.app
+product-listing-project-ten.vercel.app
 
 GitHub Repository
 
