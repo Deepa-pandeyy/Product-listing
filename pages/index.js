@@ -22,7 +22,6 @@ export default function Home({ products }) {
     <div className="container py-5">
       <h2 className="text-center mb-4">Product Listing</h2>
 
-      {/* Search Bar */}
       <div className="row justify-content-center mb-4">
         <div className="col-lg-6 col-md-8 col-sm-10">
           <input
@@ -37,10 +36,7 @@ export default function Home({ products }) {
 
       {loading ? (
         <div className="text-center">
-          <div
-            className="spinner-border text-primary"
-            role="status"
-          ></div>
+          <div className="spinner-border text-primary" role="status"></div>
         </div>
       ) : (
         <div className="row">
@@ -51,7 +47,7 @@ export default function Home({ products }) {
             >
               <div className="card h-100 shadow-sm">
                 <img
-                  src={product.image}
+                  src={product.thumbnail}
                   alt={product.title}
                   className="card-img-top p-3"
                   style={{
@@ -77,7 +73,7 @@ export default function Home({ products }) {
                   </p>
 
                   <p>
-                    ⭐ {product.rating.rate}
+                    ⭐ {product.rating}
                   </p>
 
                   <Link
@@ -98,21 +94,21 @@ export default function Home({ products }) {
 
 export async function getServerSideProps() {
   try {
-    const res = await fetch("https://fakestoreapi.com/products");
+    const res = await fetch("https://dummyjson.com/products");
 
     if (!res.ok) {
       throw new Error("Failed to fetch products");
     }
 
-    const products = await res.json();
+    const data = await res.json();
 
     return {
       props: {
-        products,
+        products: data.products,
       },
     };
   } catch (error) {
-    console.error("Error fetching products:", error);
+    console.error(error);
 
     return {
       props: {
