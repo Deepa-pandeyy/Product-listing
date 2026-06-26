@@ -94,7 +94,7 @@ export default function Home({ products }) {
 
 export async function getServerSideProps() {
   try {
-    const res = await fetch("https://dummyjson.com/products");
+    const res = await fetch("https://fakestoreapi.com/products");
 
     if (!res.ok) {
       throw new Error("Failed to fetch products");
