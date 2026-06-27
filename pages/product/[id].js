@@ -13,12 +13,12 @@ export default function ProductDetails({ product }) {
         <div className="col-md-5 text-center">
 
           <img
-            src={product.image}
+            src={product.thumbnail}
             alt={product.title}
             className="img-fluid"
             style={{
               maxHeight: "450px",
-              objectFit: "contain"
+              objectFit: "contain",
             }}
           />
 
@@ -37,12 +37,11 @@ export default function ProductDetails({ product }) {
           </p>
 
           <p>
-            <strong>Rating:</strong> ⭐ {product.rating.rate}
-            ({product.rating.count} reviews)
+            <strong>Rating:</strong> ⭐ {product.rating}
           </p>
 
           <p>
-            <strong>Description</strong>
+            <strong>Description:</strong>
           </p>
 
           <p>{product.description}</p>
@@ -75,8 +74,6 @@ export async function getServerSideProps({ params }) {
       },
     };
   } catch (error) {
-    console.error(error);
-
     return {
       notFound: true,
     };
